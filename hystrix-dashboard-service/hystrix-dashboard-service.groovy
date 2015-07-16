@@ -1,0 +1,2 @@
+@EnableHystrixDashboard
+class Dashboard { }

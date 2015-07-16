@@ -1,0 +1,13 @@
+---
+applications:
+- name: hystrix-dashboard-service
+  memory: 512M
+  instances: 1
+  host: hystrix-dashboard-service-${random-word}
+  domain: cfapps.io
+  path: target/hystrix-dashboard-service.jar
+  services:
+      - config-service
+  env:
+    SPRING_PROFILES_ACTIVE: cloud
+    DEBUG: "true"
