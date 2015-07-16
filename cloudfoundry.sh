@@ -63,7 +63,6 @@ function deploy_config_service(){
     deploy_service $NAME
 }
 
-
 function deploy_eureka_service(){
     NAME=eureka-service
     deploy_cli_app $NAME
@@ -74,24 +73,18 @@ function deploy_hystrix_dashboard_service(){
     deploy_cli_app hystrix-dashboard-service
 }
 
-function deploy_contact_service(){
-    cf cs elephantsql turtle contacts-postgresql
-    deploy_app contact-service
+function deploy_reservation_service(){
+    cf cs elephantsql turtle reservations-postgresql
+    deploy_app reservation-service
 }
-
-function deploy_bookmark_service(){
-    cf cs elephantsql turtle bookmarks-postgresql
-    deploy_app bookmark-service
-}
-
-function deploy_passport_service(){
-    deploy_app passport-service
+function deploy_reservation_client(){
+    deploy_app reservation-client
 }
 
 function reset(){
 
 
-    apps="hystrix-dashboard reservation-service reservation-client eureka-service config-service"
+    apps="hystrix-dashboard-service reservation-service reservation-client eureka-service config-service"
     apps_arr=( $apps )
     for a in "${apps_arr[@]}";
     do
@@ -99,7 +92,7 @@ function reset(){
          cf d -f $a
     done
 
-    services="reservations-postgresql config-service eureka-service"
+    services="reservations-postgresql eureka-service config-service "
     services_arr=( $services )
     for s in "${services_arr[@]}";
     do
@@ -115,10 +108,9 @@ function reset(){
 #mvn -DskipTests=true clean install
 
 #login
-#reset
-#deploy_config_service
-#deploy_eureka_service
-deploy_hystrix_dashboard_service
-#deploy_contact_service
-#deploy_bookmark_service
-#deploy_passport_service
+# reset
+# deploy_config_service
+# deploy_eureka_service
+# deploy_hystrix_dashboard_service
+#deploy_reservation_service
+deploy_reservation_client
