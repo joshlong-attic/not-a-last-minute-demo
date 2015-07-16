@@ -40,6 +40,7 @@ function deploy_app(){
 
     APP_NAME=$1
     cd $APP_NAME
+    mvn clean install
     cf push $APP_NAME  --no-start
     APPLICATION_DOMAIN=`app_domain $APP_NAME`
     echo determined that application_domain for $APP_NAME is $APPLICATION_DOMAIN.
