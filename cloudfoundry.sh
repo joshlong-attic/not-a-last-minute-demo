@@ -107,10 +107,10 @@ function reset(){
 
 #mvn -DskipTests=true clean install
 
-#login
-# reset
-# deploy_config_service
-# deploy_eureka_service
-# deploy_hystrix_dashboard_service
-#deploy_reservation_service
+login
+reset
+deploy_config_service
+deploy_eureka_service
+deploy_hystrix_dashboard_service
+deploy_reservation_service
 deploy_reservation_client
